@@ -38,6 +38,19 @@
     eventBus.emit('handleDbClickBottomImg', img)
   }
 
+  // 右键预览图片相关状态和方法
+  const previewVisible = ref(false)
+  const previewImage = ref('')
+
+  const handleImgClick = (img: ImgItem) => {
+    previewImage.value = img.path
+    previewVisible.value = true
+  }
+
+  const closePreview = () => {
+    previewVisible.value = false
+  }
+
   const handleUploadChange = async (options: {
     file: UploadFileInfo
     fileList: Array<UploadFileInfo>
@@ -110,6 +123,7 @@
             class="img-item"
             object-fit="scale-down"
             @dblclick="handleDbClick(img, index)"
+            @click="handleImgClick(img)"
           >
             <template #error>
               <i class="iconfont" style="font-size: 80px">&#xe65b;</i>
@@ -175,6 +189,21 @@
             <n-avatar :src="collect.logo" />
           </template>
         </n-tag>
+      </div>
+    </n-modal>
+
+    <!-- 右键预览图片模态框 -->
+    <n-modal
+      v-model:show="previewVisible"
+      class="image-preview-modal"
+      :bordered="false"
+      :closable="false"
+      :mask-closable="true"
+      @click="closePreview"
+      @contextmenu.prevent="closePreview()"
+    >
+      <div class="preview-container">
+        <n-image :src="previewImage" preview-disabled class="preview-image" />
       </div>
     </n-modal>
   </div>
@@ -339,6 +368,26 @@
       }
     }
   }
+
+  .image-preview-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preview-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  .preview-image {
+    max-width: 90vw;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
   .n-upload {
     // border: solid 1px red;
     width: auto;
