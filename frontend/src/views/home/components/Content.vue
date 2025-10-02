@@ -25,7 +25,7 @@
     '#00FA9A', // 薄荷绿
     '#9dc3b3', // 薄荷绿
   ]
-  const defaultLevelList = ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+  const defaultLevelList = ['夯', '顶级', '人上人', 'NPC', '拉完了', 'A', 'B', 'C', 'D', 'E']
   const deletedLevelList = []
   // 模拟图片数据
   const defaultImgList = [
@@ -44,7 +44,7 @@
 
   function initRankingRows() {
     if (rankingRows.value.length === 0) {
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         rankingRows.value.push({
           levelName: defaultLevelList[i],
           items: [],
@@ -206,11 +206,11 @@
     .rank-row {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       .level-item {
         flex-shrink: 0;
         height: 100px;
-        width: 100px;
+        width: 200px;
         @include vertical-center;
         font-size: 24px;
         font-weight: bold;

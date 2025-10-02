@@ -87,7 +87,7 @@
       align-items: center; /* 垂直居中 */
       justify-content: center; /* 水平居中 */
       height: 100px; /* 容器高度 */
-      width: 100px; /* 容器宽度 */
+      width: 200px; /* 容器宽度 */
       text-align: center; /* 文字水平居中 */
       word-wrap: break-word; /* 强制文本换行 */
       overflow-wrap: break-word; /* 防止长单词不换行 */

@@ -91,6 +91,13 @@
     "debounce": true,
     "useHomeStore": true,
     "fileToBase64": true,
-    "eventBus": true
+    "eventBus": true,
+    "DirectiveBinding": true,
+    "MaybeRef": true,
+    "MaybeRefOrGetter": true,
+    "onWatcherCleanup": true,
+    "useId": true,
+    "useModel": true,
+    "useTemplateRef": true
   }
 }

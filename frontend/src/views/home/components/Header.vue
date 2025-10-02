@@ -12,7 +12,7 @@
   const homeStore = useHomeStore()
 
   const goGithub = () => {
-    window.open('https://github.com/zhoufanglu/simple-maker/tree/main', '_blank')
+    window.open('https://github.com/s422346963/simple-maker', '_blank')
   }
 
   const handleDownLoad = async () => {
@@ -42,19 +42,12 @@
     },
     {
       icon: homeStore.skin !== 'light' ? '&#xe76b;' : '&#xe617;',
-      tip: `切换为${homeStore.skin === 'dark' ? '深色' : '浅色'}模式`,
+      tip: `切换为${homeStore.skin === 'dark' ? '浅色' : '深色'}模式`,
       click: () => {
         homeStore.switchSkin()
         // message.success(`已切换为${homeStore.skin === 'dark' ? '深色' : '浅色'}模式`)
         rightOperateButtons.value[1].icon = homeStore.skin !== 'light' ? '&#xe76b;' : '&#xe617;'
-        rightOperateButtons.value[1].tip = `切换为${homeStore.skin === 'dark' ? '深色' : '浅色'}模式`
-      },
-    },
-    {
-      icon: '&#xe60a;',
-      tip: '哄冻尼戴斯噶？你要请我喝咖啡？',
-      click: () => {
-        modalVisible.value = true
+        rightOperateButtons.value[1].tip = `切换为${homeStore.skin === 'dark' ? '浅色' : '深色'}模式`
       },
     },
     {
@@ -68,6 +61,16 @@
       click: () => goGithub(),
     },
     {
+      icon: 'R',
+      tip: '重置所有数据！！！',
+      click: () => {
+        // 重置homeStore的数据，然后刷新页面
+        homeStore.$reset()
+        location.reload()
+      },
+    },
+    /*
+    {
       icon: '&#xe882;',
       tip: '加入qq讨论群',
       click: () => {
@@ -76,7 +79,7 @@
           '_blank',
         )
       },
-    },
+    }, */
   ])
 
   // 计算总金额
@@ -92,13 +95,13 @@
       }"
       class="left"
     >
-      <img
+      <!--       <img
         class="logo"
         :src="
           homeStore.skin !== 'dark' ? '/img/simple-logo-all.svg' : '/img/simple-logo-all-white.svg'
         "
         @click="goGithub()"
-      />
+      /> -->
     </div>
     <div class="right">
       <Motion>
